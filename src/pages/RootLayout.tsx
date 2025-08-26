@@ -1,8 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
+import "./RootLayout.css";
 
 export const RootLayout = () => {
     return(<>
         <header>
+            <h1>Zoo-Bop-a-Lula</h1>
             <nav>
                 <Link to="/">Hem</Link> | <Link to="/animals">Djuren</Link>
             </nav>

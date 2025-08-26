@@ -1,3 +1,7 @@
 export const Start = () => {
-    return(<></>)
+    return(
+        <>
+            <section>Startsida</section>
+        </>
+    )
 }
