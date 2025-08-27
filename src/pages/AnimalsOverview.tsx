@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 
 import "./AnimalsOverview.css";
@@ -24,7 +24,9 @@ export const AnimalsOverview = () => {
         <ul>
         {animals.map(a => (
             <li key={a.id} style={{ marginBottom: 12 }}>
-            <strong>{a.name}</strong> ({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}
+            <strong>
+                <Link to={`/animals/${a.id}`}>{a.name}</Link>
+            </strong> ({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}
             <br />
             <img src={a.imageUrl} />
             <br />
