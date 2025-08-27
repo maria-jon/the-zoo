@@ -138,15 +138,15 @@ export function useAnimals() {
         setFed(id, true);
     };
 
-  const clearError = () => setStatus(s => ({ ...s, error: null }));
+    const clearError = () => setStatus(s => ({ ...s, error: null }));
 
-  return {
-    animals,
-    loading: status.loading,
-    error: status.error,
-    setFed,
-    toggleFed,
-    feedNow,
-    clearError,
-  } as const;
+    return {
+        animals,
+        loading: status.loading,
+        error: status.error,
+        setFed,
+        toggleFed,
+        feedNow,
+        clearError,
+    } as const;
 };
