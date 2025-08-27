@@ -1,13 +1,13 @@
 import { useOutletContext } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 
-const formatTime = (iso?: string) => {
-  if (!iso) return "—";
+const formatTime = (lastFed?: Date) => {
+  if (!lastFed) return "—";
   try {
-    const d = new Date(iso);
-    return d.toLocaleString(); // ev. toLocaleString("sv-SE")
+    const d = new Date(lastFed);
+    return d.toLocaleString("sv-SE"); 
   } catch {
-    return iso;
+    return lastFed.toLocaleString("sv-SE");
   }
 };
 

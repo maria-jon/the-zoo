@@ -8,5 +8,5 @@ export type ApiAnimal = {
     imageUrl: string;
     medicine: string;
     isFed: boolean;
-    lastFed: string;
+    lastFed: Date;
 };

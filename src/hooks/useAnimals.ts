@@ -116,7 +116,8 @@ export function useAnimals() {
      * If isFed is false > keep lastFed 
      */
     const setFed = (id: string, isFed: boolean) => {
-        const nowISO = new Date().toISOString();
+        //const nowISO = new Date().toISOString();
+        const nowISO = new Date();
 
         setLocal(id, a => ({
             ...a,
