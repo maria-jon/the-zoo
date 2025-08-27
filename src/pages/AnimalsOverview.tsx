@@ -1,6 +1,8 @@
 import { useOutletContext } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 
+import "./AnimalsOverview.css";
+
 const formatTime = (lastFed?: Date) => {
     if (!lastFed) return "—";
     try {
@@ -23,6 +25,8 @@ export const AnimalsOverview = () => {
         {animals.map(a => (
             <li key={a.id} style={{ marginBottom: 12 }}>
             <strong>{a.name}</strong> ({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}
+            <br />
+            <img src={a.imageUrl} />
             <br />
             Senast matad: {formatTime(a.lastFed)}
             <div style={{ marginTop: 6 }}>
