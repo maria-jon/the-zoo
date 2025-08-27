@@ -14,31 +14,25 @@ const formatTime = (lastFed?: Date) => {
 };
 
 export const AnimalsOverview = () => {
-    const { animals, loading, feedNow, toggleFed } = useOutletContext<AnimalsCtx>();
+    const { animals, loading } = useOutletContext<AnimalsCtx>();
 
     if (loading) return <p>Laddar…</p>;
     if (!animals.length) return <p>Inga djur hittades.</p>;
     if (!Array.isArray(animals)) return <p>Fel format på data.</p>;
 
     return (
-        <ul>
-        {animals.map(a => (
-            <li key={a.id} style={{ marginBottom: 12 }}>
-            <strong>
-                <Link to={`/animals/${a.id}`}>{a.name}</Link>
-            </strong> ({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}
-            <br />
-            <img src={a.imageUrl} />
-            <br />
-            Senast matad: {formatTime(a.lastFed)}
-            <div style={{ marginTop: 6 }}>
-                <button onClick={() => feedNow(a.id)}>Mata nu</button>
-                <button onClick={() => toggleFed(a.id)} style={{ marginLeft: 8 }}>
-                Växla status
-                </button>
-            </div>
-            </li>
-        ))}
-        </ul>
+        <section>
+            <h2>Möt djuren!</h2>
+            {animals.map(a => (
+                <article key={a.id} style={{ marginBottom: 12 }}>
+                <h3>
+                    <Link to={`/animals/${a.id}`}>{a.name}</Link>
+                </h3>
+                <p>({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}</p>
+                <img src={a.imageUrl} />
+                <p>Senast matad: {formatTime(a.lastFed)}</p>
+                </article>
+            ))}
+        </section>
     );
 };
