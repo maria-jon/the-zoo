@@ -7,7 +7,7 @@ import { AnimalsLayout } from "./pages/AnimalsLayout";
 // Pages
 import { Start } from "./pages/Start";
 import { AnimalsOverview } from "./pages/AnimalsOverview";
-import { Animal } from "./pages/Animal";
+import { AnimalDetails } from "./pages/AnimalDetails";
 
 // Error pages
 import { ErrorPage } from "./pages/ErrorPage";
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: ":id",
-                element: <Animal />
+                element: <AnimalDetails />
             },
         ],
       },
