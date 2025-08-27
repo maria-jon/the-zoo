@@ -1,15 +1,21 @@
-import { Outlet, /*Link*/ } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { useAnimals } from "../hooks/useAnimals";
+
+export type AnimalsCtx = ReturnType<typeof useAnimals>;
 
 export const AnimalsLayout = () => {
-    return(<>
-        {/*<header>
-            <nav>
-                <Link to="/">Hem</Link> | <Link to="/animals">Djuren</Link>
-            </nav>
-    </header>*/}
+    const ctx = useAnimals();
+
+    return(
         <section>
-            <h2>Djuren</h2>
-            <Outlet />
+            <h1>Djuren</h1>
+            {ctx.error && (
+                <p role="alert" style={{ color: "crimson" }}>
+                    {ctx.error} <button onClick={ctx.clearError}>Stäng</button>
+                </p>
+            )}
+            {/* Global loading indicator goes here */}
+            <Outlet context={ctx} />
         </section>
-    </>)
+    );
 }
