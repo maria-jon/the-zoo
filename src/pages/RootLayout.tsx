@@ -4,7 +4,7 @@ import "./RootLayout.css";
 export const RootLayout = () => {
     return(<>
         <header>
-            <h1>Zoo-Bop-a-Lula</h1>
+            <h1 className="title"><Link to="/">Zoo-Bop-a-Lula</Link></h1>
             <nav>
                 <Link to="/">Hem</Link> | <Link to="/animals">Djuren</Link>
             </nav>

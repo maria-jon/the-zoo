@@ -1,3 +1,31 @@
 h1 {
     margin: 0;
 }
+
+.title {
+    color: #1F3B4D;
+    will-change: filter;
+    transition: filter 300ms 200ms;
+}
+.title:hover {
+    filter: drop-shadow(0 0 0.5rem #1F3B4D);
+    color: #01595B;
+}
+  
+@keyframes title-jump {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(2px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+}
+  
+@media (prefers-reduced-motion: no-preference) {
+    .title:hover {
+      animation: title-jump 250ms ease-in-out;
+    }
+}
