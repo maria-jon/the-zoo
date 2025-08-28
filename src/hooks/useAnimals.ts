@@ -82,7 +82,7 @@ export function useAnimals() {
                         return {
                             ...f,
                             isFed: local.isFed ?? f.isFed,
-                            lastFed: local.lastFed ?? f.isFed,
+                            lastFed: local.lastFed ?? f.lastFed,
                         };
                     });
                     return merged;
@@ -110,7 +110,6 @@ export function useAnimals() {
     };
 
     // --- Update isFed and lastFed ---
-
     /** Sets isFed to explicit value
      * If isFed is true and lastFed is missing or needs to be updated > sets to now
      * If isFed is false > keep lastFed 
@@ -138,6 +137,92 @@ export function useAnimals() {
         setFed(id, true);
     };
 
+    // Calculate how long since animal was fed
+
+    // --- Helpers: time since (for styling/labels) ---
+    type TimeSince = {
+        ms: number;
+        minutes: number;
+        hours: number;
+        days: number;
+        text: string; // "nyss", "12 min", "3 h", "4 d"
+    };
+    
+    const toDateSafe = (d?: string | Date): Date | null => {
+        if (!d) return null;
+        if (d instanceof Date) return d;
+        const parsed = new Date(d);
+        return isNaN(parsed.getTime()) ? null : parsed;
+    }
+
+    const formatTimeSince = (ms: number): string => {
+        if (ms < 0) return "från framtiden";
+        const minutes = Math.floor(ms / 60000);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        if (minutes < 1) return "nyss";
+        if (minutes < 60) return `${minutes} min`;
+        if (hours < 24) return `${hours} h`;
+        return `${days} d`;
+    }
+
+    const getTimeSince = (lastFed: string | Date | undefined): TimeSince => {
+        const fed = toDateSafe(lastFed);
+        if (!fed) {
+          return { ms: Infinity, minutes: Infinity, hours: Infinity, days: Infinity, text: "aldrig" };
+        }
+        const ms = Date.now() - fed.getTime();
+        const minutes = Math.floor(ms / 60000);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        return { ms, minutes, hours, days, text: formatTimeSince(ms) };
+    }
+
+    // Per-id helper
+    const getTimeSinceFed = (id: string): TimeSince => {
+        const a = animals.find(x => x.id === id);
+        return getTimeSince(a?.lastFed);
+    };
+
+    // Smart tröskelhelper för styling (valfria gränser)
+    const isFedOlderThan = (
+        id: string,
+        opts: { minutes?: number; hours?: number; days?: number }
+    ): boolean => {
+        const t = getTimeSinceFed(id);
+        if (opts.days != null) return t.days >= opts.days;
+        if (opts.hours != null) return t.hours >= opts.hours;
+        if (opts.minutes != null) return t.minutes >= opts.minutes;
+        return false;
+    };
+
+    /*
+    const timeSinceFed = (lastFed: string | Date): string => {
+        if(!lastFed) return "-";
+
+        const fedTime = typeof lastFed === "string" ? new Date(lastFed) : lastFed; 
+        const now = new Date();
+        const diffMs = now.getTime() - fedTime.getTime();
+
+        if (diffMs < 0) return "Från framtiden";
+
+        const diffMinutes = Math.floor(diffMs / 1000 / 60);
+        const diffHours = Math.floor(diffMinutes / 60);
+        const diffDays = Math.floor(diffHours / 24);
+
+        if (diffMinutes < 1) return "nyss";
+        if (diffMinutes < 60) return `${diffMinutes} min sedan`;
+        if (diffHours < 24) return `${diffHours} h sedan`;
+        return `${diffDays} d sedan`;
+    } 
+
+    const getTimeSinceFed = (id: string): string => {
+        const animal = animals.find(a => a.id === id);
+        if(!animal) return "Okänt djur";
+        return timeSinceFed(animal.lastFed);
+    }
+    */
+
     const clearError = () => setStatus(s => ({ ...s, error: null }));
 
     return {
@@ -148,5 +233,7 @@ export function useAnimals() {
         toggleFed,
         feedNow,
         clearError,
+        getTimeSinceFed,
+        isFedOlderThan,
     } as const;
 };

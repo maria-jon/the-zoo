@@ -13,51 +13,12 @@ const formatTime = (lastFed?: Date) => {
     }
 };
 
-const checkIfHungry = (lastFed: Date) => {
-    /** 
-     * Om det gått mer än fyra timmar > klickbar knapp
-     * Om det gått mindre än fyra timmar > oklickbar knapp
-     * Om det gått mer än tre timmar > indikation om att det snart är matdags
-    */
-   try {
-        const now: Date = new Date();
-        const animalFed: Date = new Date(lastFed);
-
-        // Time difference in Ms
-        const milliDiff: number = now.getTime() - animalFed.getTime();
-
-        // Converting time into hh:mm:ss format
-
-        // Seconds
-        const totalSeconds = Math.floor(milliDiff / 1000);
-        // Minutes
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        // Hours
-        const totalHours = Math.floor(totalMinutes / 60);
-        // Number of seconds left
-        const remSeconds = totalSeconds % 60;
-        // Number of minutes left
-        const remMinutes = totalMinutes % 60;
-
-        //console.log(`${totalHours}:${remMinutes}:${remSeconds}`);
-        //return(`${totalHours}h${remMinutes}m${remSeconds}s`);
-        if(totalHours >= 4) {
-            return true;
-        }
-        if(totalHours < 4) {
-            return false;
-        }
-    } catch {
-
-    }
-};
-
 export const AnimalDetails = () => {
     const navigate = useNavigate();
     const { id: rawId } = useParams<{ id: string }>();
     const id = rawId ? decodeURIComponent(rawId).trim() : "";
 
-    const { animals, loading, error, feedNow, toggleFed } = useOutletContext<AnimalsCtx>();
+    const { animals, loading, error, feedNow, toggleFed, getTimeSinceFed } = useOutletContext<AnimalsCtx>();
 
     if (loading) return <p>Laddar…</p>;
     if (error) return <p role="alert">{error}</p>;
@@ -95,12 +56,13 @@ export const AnimalDetails = () => {
             <p>Född: {animal.yearOfBirth}</p>
             <p>Status: {animal.isFed ? "Matad ✅" : "Hungrig 🍽️"}</p>
             <p>Senast matad: {formatTime(animal.lastFed)}</p>
-            {/*<p>Det var {checkIfHungry(animal.lastFed)} sedan</p>*/}
+            {/*<p>Tid sen matad: {getTimeSinceFed(animal.id)}</p>*/}
             <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-                {checkIfHungry(animal.lastFed) === true 
+                {/*checkIfHungry(animal.lastFed) === true 
                 ? <button onClick={() => feedNow(animal.id)}>Mata nu</button>
                 : <button disabled onClick={() => feedNow(animal.id)}>Mata nu</button>
-                }
+  */}
+                <button onClick={() => feedNow(animal.id)}>Mata nu</button>
                 <button onClick={() => toggleFed(animal.id)}>Växla status</button>
             </div>
             </div>
