@@ -160,10 +160,12 @@ export function useAnimals() {
         const minutes = Math.floor(ms / 60000);
         const hours = Math.floor(minutes / 60);
         const days = Math.floor(hours / 24);
-        if (minutes < 1) return "nyss";
-        if (minutes < 60) return `${minutes} min`;
-        if (hours < 24) return `${hours} h`;
-        return `${days} d`;
+        if (minutes < 3) return "alldeles nyss";
+        if (minutes < 60) return `för ${minutes} minuter sedan`;
+        if (hours < 2) return `för ${hours} timme sedan`;
+        if (hours < 24) return `för ${hours} timmar sedan`;
+        if (days < 2) return `för ${days} dag sedan`;
+        return `för ${days} dagar sedan`;
     }
 
     const getTimeSince = (lastFed: string | Date | undefined): TimeSince => {
