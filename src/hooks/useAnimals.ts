@@ -4,7 +4,7 @@ import type { ApiAnimal } from "../models/ApiAnimal";
 
 const LS_KEY = "animals:v1";
 
-// --- Find array in API response ---
+// Find array in API response
 function extractAnimals(input: unknown): ApiAnimal[] {
     if (Array.isArray(input)) return input as ApiAnimal[];
   
@@ -101,21 +101,18 @@ export function useAnimals() {
         };
         load();
         return () => { cancelled = true; };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // --- Helpers for local updates ---
     const setLocal = (id: string, mut: (a: ApiAnimal) => ApiAnimal) => {
         setAnimals(prev => prev.map(a => (a.id === id ? mut(a) : a)));
     };
 
-    // --- Update isFed and lastFed ---
+    // Update isFed and lastFed 
     /** Sets isFed to explicit value
      * If isFed is true and lastFed is missing or needs to be updated > sets to now
      * If isFed is false > keep lastFed 
      */
     const setFed = (id: string, isFed: boolean) => {
-        //const nowISO = new Date().toISOString();
         const nowISO = new Date();
 
         setLocal(id, a => ({
@@ -138,8 +135,6 @@ export function useAnimals() {
     };
 
     // Calculate how long since animal was fed
-
-    // --- Helpers: time since (for styling/labels) ---
     type TimeSince = {
         ms: number;
         minutes: number;
@@ -186,7 +181,7 @@ export function useAnimals() {
         return getTimeSince(a?.lastFed);
     };
 
-    // Smart tröskelhelper för styling (valfria gränser)
+    // Helper for styling
     const isFedOlderThan = (
         id: string,
         opts: { minutes?: number; hours?: number; days?: number }
@@ -197,33 +192,6 @@ export function useAnimals() {
         if (opts.minutes != null) return t.minutes >= opts.minutes;
         return false;
     };
-
-    /*
-    const timeSinceFed = (lastFed: string | Date): string => {
-        if(!lastFed) return "-";
-
-        const fedTime = typeof lastFed === "string" ? new Date(lastFed) : lastFed; 
-        const now = new Date();
-        const diffMs = now.getTime() - fedTime.getTime();
-
-        if (diffMs < 0) return "Från framtiden";
-
-        const diffMinutes = Math.floor(diffMs / 1000 / 60);
-        const diffHours = Math.floor(diffMinutes / 60);
-        const diffDays = Math.floor(diffHours / 24);
-
-        if (diffMinutes < 1) return "nyss";
-        if (diffMinutes < 60) return `${diffMinutes} min sedan`;
-        if (diffHours < 24) return `${diffHours} h sedan`;
-        return `${diffDays} d sedan`;
-    } 
-
-    const getTimeSinceFed = (id: string): string => {
-        const animal = animals.find(a => a.id === id);
-        if(!animal) return "Okänt djur";
-        return timeSinceFed(animal.lastFed);
-    }
-    */
 
     const clearError = () => setStatus(s => ({ ...s, error: null }));
 

@@ -36,15 +36,14 @@ export const AnimalDetails = () => {
         );
     }
 
-    const since = getTimeSinceFed(animal.id);     // { text, minutes, hours, days, ms }
+    // Food warnings
+    const since = getTimeSinceFed(animal.id); 
     const warn3h = isFedOlderThan(animal.id, { hours: 3 });
     const warn4h = isFedOlderThan(animal.id, { hours: 4 });
     const warn5h = isFedOlderThan(animal.id, { hours: 5 });
 
-    // enkel färglogik: rött efter 24h, orange efter 3h, annars “vanligt”
     const color = warn5h ? "crimson" : warn3h ? "darkorange" : "inherit";
     const message = warn5h ? "är jättehungrig och behöver mat nu!" : warn3h ? "behöver bli matad snart." : "behöver ingen mer mat just nu.";
-    //const buttonAttribute = warn4h ? "disabled" : "";
     let buttonAttribute: boolean = false;
     if (warn4h) {
         buttonAttribute = true;

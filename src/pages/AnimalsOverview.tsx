@@ -21,11 +21,11 @@ export const AnimalsOverview = () => {
     return (
         <section>
             {animals.map((a) => {
-            const since = getTimeSinceFed(a.id);     // { text, minutes, hours, days, ms }
+            // Food warnings
+            const since = getTimeSinceFed(a.id);
             const warn3h = isFedOlderThan(a.id, { hours: 3 });
             const warn5h = isFedOlderThan(a.id, { hours: 5 });
 
-            // enkel färglogik: rött efter 24h, orange efter 3h, annars “vanligt”
             const color = warn5h ? "crimson" : warn3h ? "darkorange" : "inherit";
             const message = warn5h ? "är jättehungrig och behöver mat nu!" : warn3h ? "behöver bli matad snart." : "behöver ingen mer mat just nu.";
 
