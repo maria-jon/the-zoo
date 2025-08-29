@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom";
+
 export const Start = () => {
     return(
         <>
             <section className="p-4 rounded-xl border-2 border-teal-700">
                 <h2 className="text-4xl mb-6">Välkommen till Zoo-Bop-a-Lula!</h2>
-                <p>Hos oss får du komma riktigt nära djuren - klappa, mata och upptäcka deras unika personligheter. Från mjuka kaniner till nyfikna illrar väntar oförglömliga möten för hela familjen. Kom och upplev en dag fylld av lek, lärande och kärlek till djuren!</p>
+                <p>Hos oss får du komma riktigt nära djuren - klappa, mata och upptäcka deras unika personligheter. Från mjuka kaniner till nyfikna illrar väntar oförglömliga möten för hela familjen.</p>
+                <p className="mt-4">Kom och upplev en dag fylld av lek, lärande och kärlek till djuren!</p>
+                <p className="mt-4"><Link to="/animals">Hälsa på djuren redan nu →</Link></p>
             </section>
             <section className="p-4 rounded-xl border-2 border-teal-700 mt-12">
                 <h3 className="text-3xl mb-4">Aktiviteter på Zoo-Bop-a-Lula</h3>
