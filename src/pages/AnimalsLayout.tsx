@@ -7,7 +7,7 @@ export const AnimalsLayout = () => {
     const ctx = useAnimals();
 
     return(
-        <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" /*className="flex flex-col gap-6 sm:flex-row flex-wrap"*/>
+        <section className="grid gap-4 grid-cols-1 auto-rows-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {ctx.error && (
                 <p role="alert" style={{ color: "crimson" }}>
                     {ctx.error} <button onClick={ctx.clearError}>Stäng</button>

@@ -1,4 +1,4 @@
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 
 import "./AnimalsOverview.css";
@@ -32,11 +32,14 @@ export const AnimalsOverview = () => {
             const message = warn5h ? "är jättehungrig och behöver mat nu!" : warn3h ? "behöver bli matad snart." : "behöver ingen mer mat just nu.";
 
             return (
-                <article key={a.id} className="max-w-full">
-                    <h3 className="text-4xl">
-                        <Link to={`/animals/${a.id}`}>{a.name}</Link>
+                <article 
+                    key={a.id} 
+                    className="p-4 h-full flex flex-col justify-between rounded-xl border-2 border-teal-700"
+                >
+                    <h3 className="text-3xl">
+                        {a.name}
                     </h3>
-                    <p>({a.latinName})</p>
+                    <p className="italic text-teal-700">({a.latinName})</p>
                     <img 
                         src={a.imageUrl} 
                         alt={a.name}
@@ -46,9 +49,10 @@ export const AnimalsOverview = () => {
                         }}
                         className="h-[50vh] w-full object-cover sm:h-[30vh]" 
                     />
-                    <div>
-                        <span style={{ color }}>{a.name} blev matad {since.text}. </span>
-                        <span>{a.name} {message}</span>
+                    <p>{a.shortDescription}</p>
+                    <div className="my-4">
+                        <span>{a.name} blev matad {since.text}. </span>
+                        <span style={{ color }}>{a.name} {message}</span>
                     </div>
                     <button onClick={() => navigate(`/animals/${a.id}`)}>
                         Hälsa på {`${a.name}`}
