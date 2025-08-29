@@ -32,10 +32,10 @@ export const AnimalsOverview = () => {
 
             return (
                 <article key={a.id} className="max-w-full">
-                    <h3>
+                    <h3 className="text-4xl">
                         <Link to={`/animals/${a.id}`}>{a.name}</Link>
                     </h3>
-                    <p>({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}</p>
+                    <p>({a.latinName})</p>
                     <img 
                         src={a.imageUrl} 
                         alt={a.name}
@@ -43,7 +43,7 @@ export const AnimalsOverview = () => {
                             e.currentTarget.onerror = null;
                             e.currentTarget.src = brokenImg;
                         }}
-                        className="h-[30vh] w-full object-cover" 
+                        className="h-[50vh] w-full object-cover sm:h-[30vh]" 
                     />
                     <div>
                     <span style={{ color }}>{a.name} blev matad {since.text}. </span>
