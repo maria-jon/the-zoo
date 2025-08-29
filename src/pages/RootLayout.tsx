@@ -3,8 +3,8 @@ import "./RootLayout.css";
 
 export const RootLayout = () => {
     return(<>
-        <header>
-            <h1 className="title"><Link to="/">Zoo-Bop-a-Lula</Link></h1>
+        <header className="bg-cyan-100">
+            <h1 className="hover"><Link to="/">Zoo-Bop-a-Lula</Link></h1>
             <nav>
                 <Link to="/">Hem</Link> | <Link to="/animals">Djuren</Link>
             </nav>

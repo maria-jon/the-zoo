@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
 :root {
+  --teal-50: #f0fdfa;
+  --cyan-100: #CEFAFE;
+  --teal-700: #00786f;
+  --cyan-950: #053345;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #F5FEFE;
-  background-color: #242424;
+  color: var(--teal-50);
+  background-color: var(--cyan-950);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,11 +22,11 @@
 
 a {
   font-weight: 500;
-  color: #01595B;
+  color: var(--teal-700);
   text-decoration: inherit;
 }
 a:hover {
-  color: #1F3B4D;
+  color: var(--cyan-950);
 }
 
 body {
@@ -44,33 +49,60 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--cyan-950);
   cursor: pointer;
 }
 button:hover {
-  border-color: #1F3B4D;
-  filter: drop-shadow(0 0 0.1rem #01595B);
+  border-color: var(--cyan-950);
+  filter: drop-shadow(0 0 0.1rem var(--cyan-950));
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Hover animation */
+.hover {
+  color: var(--cyan-950);
+  will-change: filter;
+  transition: filter 300ms 200ms;
+}
+.hover:hover {
+  filter: drop-shadow(0 0 0.2rem var(--teal-50));
+}
+
+@keyframes title-jump {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #F5FEFE;
+    color: var(--cyan-950);
+    background-color: var(--teal-50);
   }
   a:hover {
-    color: #1F3B4D;
+    color: var(--cyan-950);
   }
   button {
-    background-color: #f9f9f9;
+    color: var(--teal-50);
+    background-color: var(--teal-700);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   button {
     transition: all 0.25s ease-in-out;
+  }
+
+  .hover:hover {
+    animation: title-jump 250ms ease-in-out;
   }
 }
