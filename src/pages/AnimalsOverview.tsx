@@ -19,7 +19,7 @@ export const AnimalsOverview = () => {
 
 
     return (
-        <section>
+        <>
             {animals.map((a) => {
             // Food warnings
             const since = getTimeSinceFed(a.id);
@@ -30,22 +30,22 @@ export const AnimalsOverview = () => {
             const message = warn5h ? "är jättehungrig och behöver mat nu!" : warn3h ? "behöver bli matad snart." : "behöver ingen mer mat just nu.";
 
             return (
-                <article key={a.id}>
+                <article key={a.id} className="max-w-full">
                     <h3>
                         <Link to={`/animals/${a.id}`}>{a.name}</Link>
                     </h3>
                     <p>({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}</p>
-                    <img src={a.imageUrl} />
+                    <img src={a.imageUrl} className="h-[30vh] w-full object-cover" />
                     <div>
-                    <span style={{ margin: "2px 0 0 0", color }}>{a.name} blev matad {since.text}. </span>
+                    <span style={{ color }}>{a.name} blev matad {since.text}. </span>
                     <span>{a.name} {message}</span>
                     </div>
-                    <Link to={`/animals/${a.id}`} style={{ alignSelf: "center" }}>
+                    <Link to={`/animals/${a.id}`}>
                         Hälsa på {`${a.name}`}
                     </Link>
                 </article>
             );
         })}
-        </section>
+        </>
     );
 };

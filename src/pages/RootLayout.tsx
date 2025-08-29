@@ -9,7 +9,7 @@ export const RootLayout = () => {
                 <Link to="/">Hem</Link> | <Link to="/animals">Djuren</Link>
             </nav>
         </header>
-        <main className="p-8">
+        <main className="mx-8 my-4">
             <Outlet />
         </main>
     </>)
