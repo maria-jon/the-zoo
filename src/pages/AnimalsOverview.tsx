@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 
 import "./AnimalsOverview.css";
@@ -18,6 +18,7 @@ export const AnimalsOverview = () => {
     if (!animals.length) return <p>Inga djur hittades.</p>;
     if (!Array.isArray(animals)) return <p>Fel format på data.</p>;
 
+    const navigate = useNavigate();
 
     return (
         <>
@@ -46,12 +47,12 @@ export const AnimalsOverview = () => {
                         className="h-[50vh] w-full object-cover sm:h-[30vh]" 
                     />
                     <div>
-                    <span style={{ color }}>{a.name} blev matad {since.text}. </span>
-                    <span>{a.name} {message}</span>
+                        <span style={{ color }}>{a.name} blev matad {since.text}. </span>
+                        <span>{a.name} {message}</span>
                     </div>
-                    <Link to={`/animals/${a.id}`}>
+                    <button onClick={() => navigate(`/animals/${a.id}`)}>
                         Hälsa på {`${a.name}`}
-                    </Link>
+                    </button>
                 </article>
             );
         })}
