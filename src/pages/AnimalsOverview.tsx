@@ -2,6 +2,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 
 import "./AnimalsOverview.css";
+import brokenImg from "../assets/broken-image.svg";
 
 export const AnimalsOverview = () => {
     const {
@@ -35,7 +36,15 @@ export const AnimalsOverview = () => {
                         <Link to={`/animals/${a.id}`}>{a.name}</Link>
                     </h3>
                     <p>({a.latinName}) — {a.isFed ? "Matad ✅" : "Hungrig 🍽️"}</p>
-                    <img src={a.imageUrl} className="h-[30vh] w-full object-cover" />
+                    <img 
+                        src={a.imageUrl} 
+                        alt={a.name}
+                        onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = brokenImg;
+                        }}
+                        className="h-[30vh] w-full object-cover" 
+                    />
                     <div>
                     <span style={{ color }}>{a.name} blev matad {since.text}. </span>
                     <span>{a.name} {message}</span>

@@ -3,6 +3,8 @@ import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import type { AnimalsCtx } from "./AnimalsLayout";
 import type { ApiAnimal } from "../models/ApiAnimal";
 
+import brokenImg from "../assets/broken-image.svg";
+
 export const AnimalDetails = () => {
     const navigate = useNavigate();
     const { id: rawId } = useParams<{ id: string }>();
@@ -61,6 +63,10 @@ export const AnimalDetails = () => {
                 <img
                 src={animal.imageUrl}
                 alt={animal.name}
+                onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = brokenImg;
+                }}
                 style={{ width: 200, height: 200, objectFit: "cover", borderRadius: 8 }}
                 />
                 <div>
