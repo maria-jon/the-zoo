@@ -47,7 +47,7 @@ export const AnimalsOverview = () => {
                             e.currentTarget.onerror = null;
                             e.currentTarget.src = brokenImg;
                         }}
-                        className="h-[50vh] w-full object-cover sm:h-[30vh]" 
+                        className="h-[50vh] w-full object-cover rounded-xl sm:h-[30vh]" 
                     />
                     <p>{a.shortDescription}</p>
                     <div className="my-4">

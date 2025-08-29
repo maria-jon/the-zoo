@@ -54,51 +54,52 @@ export const AnimalDetails = () => {
     }
     
     return (
-        <article>
-            <button onClick={() => navigate(-1)} aria-label="Gå tillbaka" style={{ marginBottom: 12 }}>
-                ← Tillbaka
-            </button>
-
-            <header style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                <img
-                src={animal.imageUrl}
-                alt={animal.name}
-                onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = brokenImg;
-                }}
-                style={{ width: 200, height: 200, objectFit: "cover", borderRadius: 8 }}
-                />
-                <div>
-                <h3 style={{ margin: 0 }}>{animal.name}</h3>
-                <p><em>{animal.latinName}</em></p>
-                <p>Född: {animal.yearOfBirth}</p>
-                <p>Status: {animal.isFed ? "Matad ✅" : "Hungrig 🍽️"}</p>
-                <p>Senast matad {since.text}. <span style={{color}}>{animal.name} {message}</span></p>
-                <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-                    {buttonAttribute === true 
-                    ? <button onClick={() => feedNow(animal.id)}>Mata nu</button>
-                    : <button disabled onClick={() => feedNow(animal.id)}>Mata nu</button>
-                    }
-                    <button onClick={() => toggleFed(animal.id)}>Växla status</button>
-                </div>
+        <>
+            <header className="p-4 rounded-xl border-2 border-teal-700 order-first sm:col-span-2 lg:col-span-3">
+                <button onClick={() => navigate(-1)} aria-label="Gå tillbaka" style={{ marginBottom: 12 }}>
+                    ← Tillbaka
+                </button>
+                <div className="flex items-start gap-4">
+                    <img
+                    src={animal.imageUrl}
+                    alt={animal.name}
+                    onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = brokenImg;
+                    }}
+                    className="size-[240px] object-cover rounded-xl"
+                    />
+                    <div>
+                        <h3 className="text-3xl mb-4">{animal.name}</h3>
+                        <p className="italic text-teal-700">{animal.latinName}</p>
+                        <p>Född: {animal.yearOfBirth}</p>
+                        <p>Status: {animal.isFed ? "Matad" : "Hungrig"}</p>
+                        <p>Senast matad {since.text}. <span style={{color}}>{animal.name} {message}</span></p>
+                        <div className="flex justify-evenly mt-6">
+                            {buttonAttribute === true 
+                            ? <button onClick={() => feedNow(animal.id)}>Mata nu</button>
+                            : <button disabled onClick={() => feedNow(animal.id)}>Mata nu</button>
+                            }
+                            <button onClick={() => toggleFed(animal.id)}>Växla status</button>
+                        </div>
+                    </div>
                 </div>
             </header>
 
-            <section>
-                <h4>Kort beskrivning</h4>
+            <section className="p-4 rounded-xl border-2 border-teal-700 order-2">
+                <h4 className="text-xl mb-4">Kort beskrivning</h4>
                 <p>{animal.shortDescription}</p>
             </section>
 
-            <section>
-                <h4>Lång beskrivning</h4>
+            <section className="p-4 rounded-xl border-2 border-teal-700 order-last sm:col-span-2 order-4 lg:col-span-3">
+                <h4 className="text-xl mb-4">Lång beskrivning</h4>
                 <p>{animal.longDescription}</p>
             </section>
 
-            <section>
-                <h4>Medicin</h4>
+            <section className="p-4 rounded-xl border-2 border-teal-700 order-last sm:order-3 md:order-last">
+                <h4 className="text-xl mb-4">Medicin</h4>
                 <p>{animal.medicine || "-"}</p>
             </section>
-        </article>
+        </>
     );
 }
