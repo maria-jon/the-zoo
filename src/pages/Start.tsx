@@ -40,15 +40,36 @@ export const Start = () => {
             <section className="p-4 rounded-xl border-2 border-teal-700 mt-12">
                 <h3 className="text-3xl mb-4">Öppettider</h3>
                 <div className="no-flex sm:flex justify-between">
-                    <div>
-                        <p>Måndag - stängt</p>
-                        <p>Tisdag - 10.00-16.00</p>
-                        <p>Onsdag - 10.00-18.00</p>
-                        <p>Torsdag - 10.00-18.00</p>
-                        <p>Fredag - 10.00-19.00</p>
-                        <p>Lördag - 10.00-19.00</p>
-                        <p>Söndag - 11.00-19.00</p>
-                    </div>
+                    <table className="text-left w-full mb-6 sm:mb-0 sm:mr-6 md:w-1/3">
+                        <tr>
+                            <th>Måndag</th>
+                            <td>Stängt</td>
+                        </tr>
+                        <tr>
+                            <th>Tisdag</th>
+                            <td>10:00-16:00</td>
+                        </tr>
+                        <tr>
+                            <th>Onsdag</th>
+                            <td>10:00-18:00</td>
+                        </tr>
+                        <tr>
+                            <th>Torsdag</th>
+                            <td>10:00-18:00</td>
+                        </tr>
+                        <tr>
+                            <th>Fredag</th>
+                            <td>11:00-19:00</td>
+                        </tr>
+                        <tr>
+                            <th>Lördag</th>
+                            <td>11:00-19:00</td>
+                        </tr>
+                        <tr>
+                            <th>Söndag</th>
+                            <td>11:00-19:00</td>
+                        </tr>
+                    </table>
                     <img 
                         src={bearsImg}
                         alt="Två brunbjörnar"
@@ -56,7 +77,7 @@ export const Start = () => {
                             e.currentTarget.onerror = null;
                             e.currentTarget.src = brokenImg;
                         }}
-                        className="w-full h-[30vh] sm:h-[40vh] sm:w-1/2 object-cover rounded-xl"
+                        className="w-full h-[30vh] sm:h-[40vh] sm:w-1/2 md:w-full object-cover rounded-xl"
                     />
                 </div>
 
