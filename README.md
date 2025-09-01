@@ -41,6 +41,11 @@ Assignment was to build a website in React for a zoo, fetching the animals from 
 
 - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
+### Photo credits
+
+- [brown bear and baby bear on gray concrete wall during daytime by Wilkins Morales](https://unsplash.com/photos/brown-bear-and-baby-bear-on-gray-concrete-wall-during-daytime-eLcPJeK_Unk)
+- [boy feeding brown deers during daytime by Daiga Ellaby](https://unsplash.com/photos/boy-feeding-brown-deers-during-daytime-p-vf1RhLzsc)
+
 ## Authors
 
 - [@maria-jon](https://www.github.com/maria-jon)
