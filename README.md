@@ -1,8 +1,7 @@
 # The Zoo
 
+Website made in React and Tailwind for a zoo, fetching the animals from an API. 
 This project was done as a front-end school assigment for Medieinstitutet Sweden. 
-
-Assignment was to build a website in React for a zoo, fetching the animals from an API. 
 
 ## Table of Contents
 
@@ -21,6 +20,7 @@ Assignment was to build a website in React for a zoo, fetching the animals from 
 - Individual animal pages displays all info, as well as a button to feed animal. If animal has been fed in the last 4 hours, button is disabled
 - A notice is shown if the animal hasn't been fed in the last 3 hours
 - Some animal photos are missing, and these are replaced with a placeholder image
+- Responsive design made with Tailwind
 
 ## Tech Stack
 
