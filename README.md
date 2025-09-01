@@ -1,64 +1,46 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/wHj4KLdN)
 # The Zoo
 
-I denna inlämningsuppgift kommer ni att bygga ett zoo. Zoo:t har ett antal djur som kommer behöva matas. 
+This project was done as a front-end school assigment for Medieinstitutet Sweden. 
 
-Er uppgift kommer att göra en startsida till zoo:t. Denna bör vara väl genomtänkt grafiskt, ha en tydlig uppgyggnad
-och använda sig av så många css-tekniker ni har lärt er som möjligt. 
+Assignment was to build a website in React for a zoo, fetching the animals from an API. 
 
-På startsidan skall det någonstans finnas en länk till en djur-sida där besökare kan se vilka djur som finns och en
-kort beskrivning av varje djur tillsammans med en bild. Tyvärr har några av djurens bilder blivit fel och dessa behöver
-ni hantera på ett bra sätt. 
+## Table of Contents
 
-När en användare klickar på ett djur kommer användaren till en djur-sida där bara ett djur presenteras. Här kommer det
-finnas mer information om djuret än det fanns på översiktssidan. Presentationen bör fortfarande hanteras på ett bra sätt
-genom olika css-tekniker som ni har lärt er. 
+- [Features](#features)
+- [Tech stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Acknowledgements](#acknowledgements)
+- [Authors](#authors)
 
-På djursidan kommer det att finnas en knapp för att mata ett djur. Följande regler gäller för matningen av ett djur:
+## Features
 
-- Om ett djur inte har fått mat på fyra timmar skall knappen Mata gå att klicka på.
-- Om ett djur har fått mat inom fyra timmar skall knappen vara oklickbar.
-- När ett djur inte har fått mat på tre timmar skall en indikation på att djuret snart behöver matas visas.
+- Routing with start page, animal overview, as well as a separate page for the animals
+- Animals are fetched from an API, and then any modifications are saved to localStorage
+- Animal overview displays all animals and shows some info, including information on when they last were fed
+- If an animal hasn't been fed in 3 hours, a notice about this is shown. If it hasn't been fed in 5 hours, another notice telling you to feed it now is shown
+- Individual animal pages displays all info, as well as a button to feed animal. If animal has been fed in the last 4 hours, button is disabled
+- A notice is shown if the animal hasn't been fed in the last 3 hours
+- Some animal photos are missing, and these are replaced with a placeholder image
 
-På översiktssidan för djuren skall det också vara synligt om ett djur är mätt, hungrigt eller i desperat behov av mat. 
-Men på denna översiktssida är tiderna lite annorlunda än för detaljsidan. Här gäller
+## Tech Stack
 
-- Om ett djur inte fått mat på tre timmar skall det visas en varning om att djuret snart behöver mat. 
-- Om ett djur inte har fått mat på fem timmar skall det visas en notis om att nu behöver djuret matas. 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 
-Exakt hur ni löser detta kommer att vara upp till er. Men, stäm av er lösning med mig så att jag kan komma med
-förslag eller idéer om hur ni skulle kunna göra den annorlunda vid behov. 
+- Vite version 6.3.5
+- TypeScript version 5.8.3
+- Tailwind version 4.1.12
+- React version 19.1.0
+- ESLint version 9.25.0
+- Axios version 1.11.0
 
-Djuren finns på följande url: https://animals.azurewebsites.net/api/animals
+## Screenshots
 
-## Betygskriterier
+![Hunger](/public/screenshots/Hunger.png)
 
-### Betyg G
+## Acknowledgements
 
-- Ni skall använda en router för att visa olika sidor i er applikation. 
-- I er routerlösning skall ni kunna använda olika koncept såsom layouts, child-routes och error-element korrekt.
-- Ni behöver visa en översiktssida för djuren där det går att klicka på ett djur. 
-- Ni skall kunna mata ett djur på djur-detaljsidan och spara tiden när djuret matades. 
-- Ni hanterar trasiga bild-länkar korrekt.
-- Ni behöver använda någon annan teknik än ren css för styling i denna uppgift. Det kan vara tailwind, scss, material ui eller någonting annat. 
+- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
-### Betyg VG
+## Authors
 
-- Samtliga krav från betyg G skall vara uppfyllda. 
-- Ni behöver välja att antingen hämta data med hjälp av begreppet tjänster eller en custom hook. 
-- Ni behöver använda er av context istället för props för att kommunicera mellan komponenter. 
-- Ni behöver använda er av reducers istället för state för hanteringen av djur. 
-- När ni har matat ett djur och kommer tillbaka till djur-sidan skall eventuellt matningen nollställas, om rätt villkor angående tiderna här ovan stämmer. 
-- På översiktsidan skall djurens status presenteras på ett diskret sätt beroende på tiderna beskriva här ovan. 
-- Ni använder er av subtila animeringar vid klick på knappar, eventuellt sidladdningar och route-förändringar samt där ni känner att det behövs
-
-## Övrigt
-
-Kom ihåg att stämma av de idéer ni har med mig innan ni börjar koda. Ofta finns det någonting som behöver itereras några gånger och det är bra att göra
-detta innan ni kommer för långt i er tänkta lösning. 
-
-Rita gärna upp er lösning så ni enklare förstår hur ni skall dela upp era komponenter och förstå hur kommunikationen mellan komponenter sker.
-
-Välj en teknik gällande css som ni antingen vill lära er mer om eller som ni tycker är rolig och håll er till ert val genom projektet, även om det verkar som att saker inte fungerar som ni vill. Det kan vi lösa tillsammans. 
-
-Ha roligt, skratta och lär er massor!
+- [@maria-jon](https://www.github.com/maria-jon)
