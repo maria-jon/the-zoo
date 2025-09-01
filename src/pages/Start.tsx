@@ -41,34 +41,36 @@ export const Start = () => {
                 <h3 className="text-3xl mb-4">Öppettider</h3>
                 <div className="no-flex sm:flex justify-between">
                     <table className="text-left w-full mb-6 sm:mb-0 sm:mr-6 md:w-1/3">
-                        <tr>
-                            <th>Måndag</th>
-                            <td>Stängt</td>
-                        </tr>
-                        <tr>
-                            <th>Tisdag</th>
-                            <td>10:00-16:00</td>
-                        </tr>
-                        <tr>
-                            <th>Onsdag</th>
-                            <td>10:00-18:00</td>
-                        </tr>
-                        <tr>
-                            <th>Torsdag</th>
-                            <td>10:00-18:00</td>
-                        </tr>
-                        <tr>
-                            <th>Fredag</th>
-                            <td>11:00-19:00</td>
-                        </tr>
-                        <tr>
-                            <th>Lördag</th>
-                            <td>11:00-19:00</td>
-                        </tr>
-                        <tr>
-                            <th>Söndag</th>
-                            <td>11:00-19:00</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th>Måndag</th>
+                                <td>Stängt</td>
+                            </tr>
+                            <tr>
+                                <th>Tisdag</th>
+                                <td>10:00-16:00</td>
+                            </tr>
+                            <tr>
+                                <th>Onsdag</th>
+                                <td>10:00-18:00</td>
+                            </tr>
+                            <tr>
+                                <th>Torsdag</th>
+                                <td>10:00-18:00</td>
+                            </tr>
+                            <tr>
+                                <th>Fredag</th>
+                                <td>11:00-19:00</td>
+                            </tr>
+                            <tr>
+                                <th>Lördag</th>
+                                <td>11:00-19:00</td>
+                            </tr>
+                            <tr>
+                                <th>Söndag</th>
+                                <td>11:00-19:00</td>
+                            </tr>
+                        </tbody>
                     </table>
                     <img 
                         src={bearsImg}
