@@ -1,13 +1,30 @@
 import { Link } from "react-router-dom";
 
+import bearsImg from "../assets/two-brown-bears.jpg";
+import deerImg from "../assets/child-feeding-deer.jpg";
+import brokenImg from "../assets/broken-image.svg";
+
 export const Start = () => {
     return(
         <>
             <section className="p-4 rounded-xl border-2 border-teal-700">
                 <h2 className="text-4xl mb-6">Välkommen till Zoo-Bop-a-Lula!</h2>
-                <p>Hos oss får du komma riktigt nära djuren - klappa, mata och upptäcka deras unika personligheter. Från mjuka kaniner till nyfikna illrar väntar oförglömliga möten för hela familjen.</p>
-                <p className="mt-4">Kom och upplev en dag fylld av lek, lärande och kärlek till djuren!</p>
-                <p className="mt-4"><Link to="/animals">Hälsa på djuren redan nu →</Link></p>
+                <div className="no-flex sm:flex justify-between">
+                    <img 
+                        src={deerImg}
+                        alt="Barn som matar rådjur genom ett staket"
+                        onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = brokenImg;
+                        }}
+                        className="w-full h-[30vh] sm:h-[40vh] sm:w-1/2 object-cover rounded-xl"
+                    />
+                    <div className="w-full pt-6 sm:w-1/2 sm:pt-0 sm:pl-6">
+                        <p>Hos oss får du komma riktigt nära djuren - klappa, mata och upptäcka deras unika personligheter. Från mjuka kaniner till nyfikna illrar väntar oförglömliga möten för hela familjen.</p>
+                        <p className="mt-4">Kom och upplev en dag fylld av lek, lärande och kärlek till djuren!</p>
+                        <p className="mt-4"><Link to="/animals">Hälsa på djuren redan nu →</Link></p>
+                    </div>
+                </div>
             </section>
             <section className="p-4 rounded-xl border-2 border-teal-700 mt-12">
                 <h3 className="text-3xl mb-4">Aktiviteter på Zoo-Bop-a-Lula</h3>
@@ -22,13 +39,27 @@ export const Start = () => {
 
             <section className="p-4 rounded-xl border-2 border-teal-700 mt-12">
                 <h3 className="text-3xl mb-4">Öppettider</h3>
-                <p>Måndag - stängt</p>
-                <p>Tisdag - 10.00-16.00</p>
-                <p>Onsdag - 10.00-18.00</p>
-                <p>Torsdag - 10.00-18.00</p>
-                <p>Fredag - 10.00-19.00</p>
-                <p>Lördag - 10.00-19.00</p>
-                <p>Söndag - 11.00-19.00</p>
+                <div className="no-flex sm:flex justify-between">
+                    <div>
+                        <p>Måndag - stängt</p>
+                        <p>Tisdag - 10.00-16.00</p>
+                        <p>Onsdag - 10.00-18.00</p>
+                        <p>Torsdag - 10.00-18.00</p>
+                        <p>Fredag - 10.00-19.00</p>
+                        <p>Lördag - 10.00-19.00</p>
+                        <p>Söndag - 11.00-19.00</p>
+                    </div>
+                    <img 
+                        src={bearsImg}
+                        alt="Två brunbjörnar"
+                        onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = brokenImg;
+                        }}
+                        className="w-full h-[30vh] sm:h-[40vh] sm:w-1/2 object-cover rounded-xl"
+                    />
+                </div>
+
             </section>
         </>
     )
